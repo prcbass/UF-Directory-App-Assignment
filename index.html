@@ -12,13 +12,8 @@
       <div class="row" ng-controller="ListingsController">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
-            <!-- 
-
-                Implement a way to filter through listings using the search bar 
-
-              -->
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" ng-model="query">
           </div>
           <div class="tableWrapper">
             <table class="table table-striped table-hover">
@@ -29,7 +24,7 @@
                 <th>Detailed Information</th> 
                 <th></th>
               </tr>
-              <tr ng-repeat="listing in listings">
+              <tr ng-repeat="listing in listings | filter:query">
                 <td><button ng-click="deleteListing($index)">Delete</button>
                 <td>{{listing.code}}</td>
                 <td>{{listing.name}}</td>
@@ -37,11 +32,6 @@
               </tr>
             </table>
           </div>
-          <!-- 
-
-              Write an HTML form that adds new listings to the directory 
-
-            -->
             <br>
             <input type="text" placeholder="Code:" ng-model="newCode">
             <input type="text" placeholder="Name:" ng-model="newName">

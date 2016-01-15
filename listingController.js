@@ -10,7 +10,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.detailLong = '';
     $scope.detailAdd = '';
 
-    $scope.wantDetails = false;
+    $scope.wantDetails = false; //used to initially hide the detail info jumbotron
 
 
     $scope.listings = Listings;
@@ -22,6 +22,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         "coordinates":{"latitude":$scope.newCLat,"longitude":$scope.newCLong},
         "address":$scope.newAddress});
 
+      //reset our vars after adding the listing
       $scope.newCode = '';
       $scope.newName = '';
       $scope.newCLat = '';
@@ -35,7 +36,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.showDetails = function(index) {
       $scope.wantDetails = true;
-      
+
+      //checks to see if the coordinates field exists
       if(angular.isUndefined($scope.listings[index].coordinates)){
         $scope.detailLat = "No info!";
         $scope.detailLong = "No info!";
